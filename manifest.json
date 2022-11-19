@@ -1,0 +1,40 @@
+{
+  "version": "0.1.0",
+  "name": "Twitter NPC",
+  "description": "Warns you of sus characters on Twitter and protects your sanity",
+  "author": "Darude Sandstorm",
+  "manifest_version": 3,
+  "minimum_chrome_version": "96.0",
+  "icons": {
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "24": "icon24.png",
+      "32": "icon32.png"
+    }
+  },
+  "permissions": [
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://twitter.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://twitter.com/*"
+      ],
+      "js": [
+        "inject.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ]
+}
